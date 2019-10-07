@@ -41,7 +41,7 @@ def exact_url(url):
 	
 
 def mainprogram(): 
-	url = "https://www.amazon.in/Airtel-4G-Hotspot-E5573Cs-609-Portable/dp/B06WV9WR4Z"
+	url = "your URL"
 	exacturl = exact_url(url) 
 	page = Page(exacturl) 
 	soup = bs.BeautifulSoup(page.html, 'html.parser') 
@@ -55,7 +55,7 @@ def mainprogram():
 	
 	str = str.replace(", ", "") 
 	current_price = int(float(str[4:])) 
-	your_price = 1000
+	your_price = (your price)
 	if current_price < your_price:
 		print("Price decreased book now") 
 		winsound.Beep(frequency, duration)
@@ -74,7 +74,7 @@ def mail(message):
 	
 
 
-schedule.every().seconds.do(mainprogram) 
+schedule.every().minutes.do(mainprogram) 
  
 while True: 
 	schedule.run_pending() 
