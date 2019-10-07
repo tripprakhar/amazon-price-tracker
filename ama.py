@@ -69,7 +69,7 @@ def mail(message):
     s = smtplib.SMTP('smtp.gmail.com', 587)  
     s.starttls() 
     s.login("yash.15.ty@gmail.com", "yashwantmurty15") 
-    s.sendmail("yash.15.ty@gmail.com", "tp46clicks@gmail.com", message) 
+    s.sendmail("yash.15.ty@gmail.com", "receiver's", message) 
     s.quit() 		
 	
 
