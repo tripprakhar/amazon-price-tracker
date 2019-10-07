@@ -7,8 +7,9 @@ import urllib.request
 from PyQt5.QtWebEngineWidgets import QWebEnginePage 
 from PyQt5.QtWidgets import QApplication 
 from PyQt5.QtCore import QUrl 
-
+import smtplib
 import winsound 
+
 frequency = 2500  
 duration = 1000  
 
@@ -51,21 +52,30 @@ def mainprogram():
 	str = "" 
 	for line in js_test.stripped_strings : 
 		str = line 
-
 	
 	str = str.replace(", ", "") 
 	current_price = int(float(str[4:])) 
-	your_price = 100
-	if current_price < your_price : 
+	your_price = 1000
+	if current_price < your_price:
 		print("Price decreased book now") 
-		winsound.Beep(frequency, duration) 
+		winsound.Beep(frequency, duration)
+		mail("Price decreased book now")
 	else: 
 		print("Price is high please wait for the best deal") 
 	
 
 
-schedule.every().seconds.do(mainprogram) 
+def mail(message):
+    s = smtplib.SMTP('smtp.gmail.com', 587)  
+    s.starttls() 
+    s.login("yash.15.ty@gmail.com", "yashwantmurty15") 
+    s.sendmail("yash.15.ty@gmail.com", "tp46clicks@gmail.com", message) 
+    s.quit() 		
+	
 
+
+schedule.every().seconds.do(mainprogram) 
+ 
 while True: 
 	schedule.run_pending() 
 	time.sleep(1) 
