@@ -55,7 +55,7 @@ def mainprogram():
 	
 	str = str.replace(",", "") 
 	current_price = int(float(str[3:])) 
-	your_price = input("Enter your price: ")
+	your_price = int(input("Enter your price: "))
 	if current_price < your_price:
 		print("Price decreased book now") 
 		winsound.Beep(frequency, duration)
