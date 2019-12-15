@@ -41,7 +41,7 @@ def exact_url(url):
 	
 
 def mainprogram(): 
-	url = "your URL"
+	url = input("Your URL: ")
 	exacturl = exact_url(url) 
 	page = Page(exacturl) 
 	soup = bs.BeautifulSoup(page.html, 'html.parser') 
@@ -53,9 +53,9 @@ def mainprogram():
 	for line in js_test.stripped_strings : 
 		str = line 
 	
-	str = str.replace(", ", "") 
-	current_price = int(float(str[4:])) 
-	your_price = (your price)
+	str = str.replace(",", "") 
+	current_price = int(float(str[3:])) 
+	your_price = input("Enter your price: ")
 	if current_price < your_price:
 		print("Price decreased book now") 
 		winsound.Beep(frequency, duration)
@@ -69,13 +69,8 @@ def mail(message):
     s = smtplib.SMTP('smtp.gmail.com', 587)  
     s.starttls() 
     s.login("yash.15.ty@gmail.com", "yashwantmurty15") 
-    s.sendmail("yash.15.ty@gmail.com", "receiver's", message) 
+    mail_me = input("Enter your mail address: ")
+    s.sendmail("yash.15.ty@gmail.com", mail_me, message) 
     s.quit() 		
 	
-
-
-schedule.every().minutes.do(mainprogram) 
- 
-while True: 
-	schedule.run_pending() 
-	time.sleep(1) 
+mainprogram()
